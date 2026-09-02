@@ -1,0 +1,2 @@
+DistrictID,DistrictName,StateID,Active,population,area_sqkm,literacy_rate,unemployment_rate,avg_income,urbanization_pct
+101,sample_value,101,true,101,98.5,98.5,98.5,98.5,98.5

@@ -1,0 +1,2 @@
+UnitID,UnitName,TypeID,ParentUnit,NationalityID,StateID,DistrictID,Active,lat,lng,jurisdiction_area_sqkm,officer_count
+101,sample_value,101,101,101,101,101,true,98.5,98.5,98.5,101

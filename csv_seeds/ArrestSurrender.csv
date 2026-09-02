@@ -1,0 +1,2 @@
+ArrestSurrenderID,CaseMasterID,ArrestSurrenderTypeID,ArrestSurrenderDate,ArrestSurrenderStateId,ArrestSurrenderDistrictId,PoliceStationID,IOID,CourtID,AccusedMasterID,IsAccused,IsComplainantAccused
+101,101,101,sample_value,101,101,101,101,101,101,true,true

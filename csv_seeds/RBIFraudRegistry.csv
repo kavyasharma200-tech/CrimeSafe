@@ -1,0 +1,2 @@
+id,account_number,bank_name,flagged_date,fraud_type,reported_amount,status
+101,sample_value,sample_value,sample_value,sample_value,98.5,sample_value

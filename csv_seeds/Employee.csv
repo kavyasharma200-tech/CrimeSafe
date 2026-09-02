@@ -1,0 +1,2 @@
+EmployeeID,DistrictID,UnitID,RankID,DesignationID,KGID,FirstName,EmployeeDOB,GenderID,BloodGroupID,PhysicallyChallenged,AppointmentDate,username,hashed_password,role,mfa_secret,mfa_enabled
+101,101,101,101,101,sample_value,sample_value,sample_value,101,101,true,sample_value,sample_value,sample_value,sample_value,sample_value,true

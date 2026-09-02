@@ -1,0 +1,2 @@
+AccusedMasterID,CaseMasterID,AccusedName,AgeYear,GenderID,PersonID,address,num_prior_offenses,risk_score
+101,101,sample_value,101,101,sample_value,sample_value,101,98.5

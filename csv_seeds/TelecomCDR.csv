@@ -1,0 +1,2 @@
+id,phone_number,imsi,imei,cell_tower_id,call_type,associated_number,duration_seconds,timestamp
+101,sample_value,sample_value,sample_value,sample_value,sample_value,sample_value,101,sample_value

@@ -1,0 +1,2 @@
+CaseMasterID,CrimeNo,CaseNo,CrimeRegisteredDate,PolicePersonID,PoliceStationID,CaseCategoryID,GravityOffenceID,CrimeMajorHeadID,CrimeMinorHeadID,CaseStatusID,CourtID,IncidentFromDate,IncidentToDate,InfoReceivedPSDate,latitude,longitude,BriefFacts,priority,sla_deadline,summary,leads,evidence_correlations,timeline
+101,sample_value,sample_value,sample_value,101,101,101,101,101,101,101,101,sample_value,sample_value,sample_value,98.5,98.5,sample_value,sample_value,sample_value,sample_value,sample_value,sample_value,sample_value
