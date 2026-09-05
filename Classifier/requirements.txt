@@ -1,0 +1,20 @@
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart
+torch>=1.10.0
+torchvision
+timm==0.4.12
+facenet-pytorch
+albumentations==1.0.0
+opencv-python-headless
+numpy
+pillow
+aiofiles
+google-generativeai
+# Pipeline 3 — Scene Detection
+ultralytics>=8.0.0
+transformers>=4.40.0
+safetensors
+# Pipeline 7 — Counterfeit Currency (serial-number OCR check)
+easyocr
+python-dotenv
