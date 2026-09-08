@@ -1,0 +1,9 @@
+{
+	"name": "kawach_function",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "ishaan@sparsh-mukthi.xyz",
+	"dependencies": {
+		"zcatalyst-sdk-node": "latest"
+	}
+}

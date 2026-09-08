@@ -1,0 +1,38 @@
+{
+  "algorithm": "XGBoost Regressor",
+  "data_source": "REAL: NCRB district-wise IPC crimes 2001-2012 (data.gov.in) + Census 2011 (Registrar General of India) + Karnataka DES district income 2021-22",
+  "r2_score": 0.8945,
+  "rmse": 32.92,
+  "train_rows": 209,
+  "test_rows": 75,
+  "train_years": "2001-2009",
+  "test_years": "2010-2012",
+  "features": [
+    "unemployment_rate",
+    "poverty_rate",
+    "police_per_capita",
+    "gdp_per_capita",
+    "school_density",
+    "hospital_density",
+    "population_density",
+    "month_sin",
+    "month_cos",
+    "festival_flag",
+    "adjacent_crime_rate",
+    "lagged_crime_rate_3m",
+    "lagged_crime_rate_12m"
+  ],
+  "target": "crime_rate_per_100k",
+  "crime_rate_p5": 103.42673567731572,
+  "crime_rate_p95": 399.9908591828014,
+  "shap_available": true,
+  "known_proxies": {
+    "unemployment_rate": "Census 2011 non-workforce-participation proxy, not official unemployment survey data",
+    "poverty_rate": "Census 2011 household-amenity deprivation proxy (LPG access), not an official poverty line measure",
+    "police_per_capita": "no open district-level dataset found; fixed state-average estimate",
+    "school_density": "no open district-level dataset found; fixed state-average estimate",
+    "hospital_density": "no open district-level dataset found; fixed state-average estimate",
+    "month_sin/cos/festival_flag": "NCRB source data is annual only, no real monthly signal available"
+  },
+  "trained_at": "2026-07-24T19:33:27.097103+00:00"
+}
