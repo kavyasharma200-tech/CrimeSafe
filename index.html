@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="user/public/kawach.png" />
+  <link rel="apple-touch-icon" href="user/public/kawach.png" />
+  <meta property="og:title" content="KAWACH — One shield. Two frontlines." />
+  <meta property="og:description" content="AI-driven Public Safety & Citizen Scam Shield Platform" />
+  <meta property="og:image" content="user/public/kawach.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="user/public/kawach.png" />
+  <title>KAWACH — One shield. Two frontlines.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400;500;640;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="departments/css/kawach.css">
+  <style>
+    /* landing-only compositions — same tokens, extra layouts */
+    .band { padding: var(--s-16) var(--page-pad); border-top: 1px solid var(--rule-strong); }
+    .band-tall { padding-block: var(--s-24); }
+    .band-head { display: flex; align-items: baseline; gap: var(--s-6); margin-bottom: var(--s-8); }
+    .band-num { font-family: var(--font-mono); font-size: var(--text-label); color: var(--accent-500); letter-spacing: 0.12em; white-space: nowrap; }
+    .band-title { font-family: var(--font-display); font-size: var(--text-h2); font-weight: 560; letter-spacing: -0.01em; }
+    .band-title em { font-style: italic; font-weight: 420; color: var(--accent-700); }
+
+    .split { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--s-16); align-items: start; }
+    .split.rev { direction: rtl; } .split.rev > * { direction: ltr; }
+    @media (max-width: 860px) { .split, .split.rev { grid-template-columns: 1fr; gap: var(--s-8); direction: ltr; } }
+
+    .facts { display: flex; flex-direction: column; gap: var(--s-3); border-left: 2px solid var(--accent-300); padding-left: var(--s-6); }
+    .facts li { list-style: none; font-size: 0.9rem; color: var(--text-soft); }
+    .facts b { color: var(--text); font-weight: 640; }
+
+    .metric-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border: 1px solid var(--rule-strong); border-radius: var(--radius); background: var(--paper); overflow: hidden; }
+    .metric { padding: var(--s-6); border-inline-start: 1px solid var(--rule); }
+    .metric:first-child { border-inline-start: 0; }
+    .metric b { display: block; font-family: var(--font-mono); font-size: clamp(1.4rem, 2.6vw, 2.1rem); font-weight: 600; color: var(--accent-900); font-variant-numeric: tabular-nums; }
+    @media (max-width: 640px) { .metric-strip { grid-template-columns: repeat(2, 1fr); } .metric { border-top: 1px solid var(--rule); } }
+
+    .access-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s-6); }
+    .access-card { display: flex; flex-direction: column; gap: var(--s-4); background: var(--paper); border: 1px solid var(--rule-strong); border-radius: var(--radius); padding: var(--s-8); transition: transform .25s ease, box-shadow .25s ease; }
+    .access-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+    .access-card .desk-glyph { width: 44px; height: 44px; }
+    .access-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 560; }
+    .access-card p { font-size: 0.88rem; color: var(--text-soft); flex: 1; }
+    .access-go { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--bone-0); background: var(--accent-900); border-radius: var(--radius); padding: var(--s-3) var(--s-4); text-align: center; }
+    .access-card:hover .access-go { background: var(--accent-700); }
+
+    .flow { counter-reset: step; display: grid; gap: 1px; background: var(--rule-strong); border: 1px solid var(--rule-strong); border-radius: var(--radius); overflow: hidden; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .flow-step { background: var(--paper); padding: var(--s-6); }
+    .flow-step::before { counter-increment: step; content: counter(step, decimal-leading-zero); font-family: var(--font-mono); font-size: var(--text-label); color: var(--accent-500); display: block; margin-bottom: var(--s-2); }
+    .flow-step h4 { font-size: 0.9rem; font-weight: 640; margin-bottom: 4px; }
+    .flow-step p { font-size: 0.78rem; color: var(--text-faint); }
+
+    .quote-band { background: var(--accent-900); color: var(--bone-0); }
+    .quote-band .band-title, .quote-band .display { color: var(--bone-0); }
+    .quote-band .prose { color: var(--accent-100); }
+    .quote-band .band-num { color: var(--accent-300); }
+  </style>
+</head>
+<body>
+  <div class="paper-field"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" id="brand-mark"></span>
+      <span class="stack-2" style="gap:0">
+        <span class="brand-name">KAWACH</span>
+        <span class="brand-sub">Public Safety Grid</span>
+      </span>
+    </a>
+    <span class="row" style="gap:var(--s-4)">
+      <span class="topbar-clock" id="topbar-clock"></span>
+      <a class="top-link" href="#access">Access Gate</a>
+    </span>
+  </header>
+
+  <!-- S·01 HERO -->
+  <section class="hero">
+    <p class="kicker">Crime analytics × digital public safety · Bengaluru command</p>
+    <h1 class="display hero-title">
+      <span class="line"><span>One shield.</span></span>
+      <span class="line"><span><em>Two</em> frontlines.</span></span>
+    </h1>
+    <p class="hero-sub">
+      On the street: potholes, fires, broken mains, crime clusters. On the phone:
+      digital-arrest calls, deepfakes, counterfeit notes, mule networks. KAWACH is one
+      platform that watches both — keeping the citizen anonymous while the state acts.
+    </p>
+    <div class="hero-ticker">
+      <div class="tick"><span class="tick-num">7</span><span class="label">AI Neural Engines</span></div>
+      <div class="tick"><span class="tick-num">11</span><span class="label">Civic Desks</span></div>
+      <div class="tick"><span class="tick-num">3,974</span><span class="label">Law Sections Indexed</span></div>
+      <div class="tick"><span class="tick-num">98.67%</span><span class="label">Currency CNN Accuracy</span></div>
+    </div>
+    <div class="scroll-cue">Explore Public Safety Architecture</div>
+  </section>
+
+  <!-- S·02 THE DUAL-FRONTLINE PARADOX (UIMAX Award Section 1) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·02</span><h2 class="band-title">The Dual-Frontline <em>Paradox.</em></h2></div>
+    <div class="split">
+      <div class="prose space-y-4">
+        <p>Modern cities suffer from two concurrent emergencies: physical infrastructure decay on the streets and high-tech extortion in citizen pockets.</p>
+        <p>A "digital arrest" call holds a victim hostage for hours via fake CBI video calls until life savings disappear. Simultaneously, physical potholes and municipal hazards go unaddressed due to fragmented departmental routing.</p>
+      </div>
+      <div class="access-grid" style="grid-template-columns: 1fr">
+        <div class="access-card" style="border-left: 4px solid var(--accent-900)">
+          <div class="row-wrap" style="justify-content:space-between;align-items:center">
+            <span class="band-num">FRONTLINE 01</span>
+            <span class="chip chip-critical">Physical Safety</span>
+          </div>
+          <h3>Street &amp; Civic Hazards</h3>
+          <p>Potholes, structural fires, water main bursts, illegal dumping, and unlit transit corridors. Automated route assignment across 11 municipal departments.</p>
+        </div>
+        <div class="access-card" style="border-left: 4px solid #b08850">
+          <div class="row-wrap" style="justify-content:space-between;align-items:center">
+            <span class="band-num">FRONTLINE 02</span>
+            <span class="chip chip-high">Digital Threats</span>
+          </div>
+          <h3>Cyber &amp; Financial Extortion</h3>
+          <p>Digital arrest scams, deepfake video impersonation, counterfeit currency notes, and syndicate bank mule networks. Instant AI verification before funds move.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S·03 ZERO-TRUST ANONYMITY VAULT (UIMAX Award Section 2) -->
+  <section class="band band-tall quote-band reveal">
+    <div class="band-head"><span class="band-num">S·03</span><h2 class="band-title">Zero-Trust Anonymity <em>Matrix.</em></h2></div>
+    <h3 class="display" style="font-size:var(--text-h1);max-width:22ch">Evidence, location, &amp; urgency cross the wall — <em>never a citizen's identity.</em></h3>
+    <div class="split" style="margin-top:var(--s-8)">
+      <div class="prose">
+        <p>KAWACH implements client-side EXIF stripping and deterministic cryptographic hashing. Department desks and police consoles read only incident metrics, geohashes, and evidence files.</p>
+        <p>Who reported the hazard remains strictly client-side by construction, encouraging zero-fear citizen participation.</p>
+      </div>
+      <ul class="facts">
+        <li><b>Device-Level Sanitization:</b> GPS metadata &amp; camera headers scrubbed before transmission.</li>
+        <li><b>Identity-Free Database schema:</b> Police and civic queries hit isolated, non-identifying columns.</li>
+        <li><b>Irreversible Session Hashes:</b> Anonymous user tokens enable status tracking without phone/email storage.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- S·04 7-CORE AI NEURAL ENGINE SHOWCASE (UIMAX Award Section 3 - Bento Grid) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·04</span><h2 class="band-title">7-Core AI <em>Neural Engines.</em></h2></div>
+    <p class="prose" style="margin-bottom:var(--s-8)">Seven specialized AI classifiers run continuously to verify media, route reports, map syndicates, and consult legal rulebooks.</p>
+    
+    <div class="access-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s-6);">
+      <div class="access-card">
+        <span class="band-num">ENGINE 01</span>
+        <h3>🎭 Deepfake Forensics</h3>
+        <p>Dual EfficientNet-B7 ensemble sampling 32 frames deep. MTCNN face detection calculates frame-consensus authenticity scores.</p>
+        <span class="chip chip-normal">MTCNN + 2× EfficientNet-B7</span>
+      </div>
+      <div class="access-card">
+        <span class="band-num">ENGINE 02</span>
+        <h3>💵 Counterfeit Currency CNN</h3>
+        <p>Trained on 6,304 note images. Integrates 4 classical checks: security thread continuity, microprint sharpness, and RBI serial OCR growth.</p>
+        <span class="chip chip-normal">98.67% Accuracy · AUC 0.998</span>
+      </div>
+      <div class="access-card">
+        <span class="band-num">ENGINE 03</span>
+        <h3>🚨 Scene Verification</h3>
+        <p>YOLO12s road damage detection fused with SigLIP waste classifier. Persistence ratio gate prevents single-frame synthetic illusions.</p>
+        <span class="chip chip-normal">YOLO12s + SigLIP</span>
+      </div>
+      <div class="access-card">
+        <span class="band-num">ENGINE 04</span>
+        <h3>🗺️ DBSCAN Crime Hotspotting</h3>
+        <p>Haversine spatial clustering groups incidents into real-time patrol zones with centroid threat vectors and noise filtering.</p>
+        <span class="chip chip-normal">DBSCAN Spatial Clustering</span>
+      </div>
+      <div class="access-card">
+        <span class="band-num">ENGINE 05</span>
+        <h3>🕸️ Fraud Ring Graph AI</h3>
+        <p>Louvain community detection &amp; betweenness centrality reveal hidden syndicate mule accounts, phone networks, and UPI targets.</p>
+        <span class="chip chip-normal">Graph Neural Intelligence</span>
+      </div>
+      <div class="access-card">
+        <span class="band-num">ENGINE 06</span>
+        <h3>⚖️ Nayak BNS Legal RAG</h3>
+        <p>3,974 indexed sections across BNS, Motor Vehicles Act, CrPC &amp; RBI circulars. Citation-backed legal advice and automated draft filings.</p>
+        <span class="chip chip-normal">3,974 Sections Indexed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S·05 THE 15-MINUTE SLA GUARANTEE LADDER (UIMAX Award Section 4) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·05</span><h2 class="band-title">15-Minute SLA <em>Guarantee Ladder.</em></h2></div>
+    <div class="split">
+      <div class="prose">
+        <p>Every incident is auto-assigned a hard resolution window upon filing. Emergency Fire dispatches enter at 15 minutes; Police critical alerts at 4 hours or better.</p>
+        <p>Unresolved tickets breach visually on the Police Command Console — there is no quiet expiration or unmonitored drop.</p>
+      </div>
+      <div class="sla-ladder" style="width:100%">
+        <div class="sla-rung"><span class="chip chip-critical">Critical</span><div class="sla-bar-track"><div class="sla-bar t-critical"></div></div><span class="sla-window">15 min</span></div>
+        <div class="sla-rung"><span class="chip chip-high">High</span><div class="sla-bar-track"><div class="sla-bar t-high"></div></div><span class="sla-window">4 hrs</span></div>
+        <div class="sla-rung"><span class="chip chip-normal">Normal</span><div class="sla-bar-track"><div class="sla-bar t-normal"></div></div><span class="sla-window">24 hrs</span></div>
+        <div class="sla-rung"><span class="chip chip-low">Low</span><div class="sla-bar-track"><div class="sla-bar t-low"></div></div><span class="sla-window">72 hrs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S·06 BSA §63 FORENSIC EVIDENCE VAULT (UIMAX Award Section 5) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·06</span><h2 class="band-title">BSA §63 Court-Admissible <em>Dossiers.</em></h2></div>
+    <div class="split">
+      <div class="prose">
+        <p>Incidents generate SHA-256 hash-sealed PDF dossiers directly from database records. Hashed over final output bytes and registered in an immutable audit ledger, every dossier maintains court-ready chain of custody under Bharatiya Sakshya Adhiniyam 2023 §63.</p>
+      </div>
+      <ul class="facts">
+        <li><b>Cryptographic Validation:</b> SHA-256 checksum printed in PDF footer matches court exports.</li>
+        <li><b>Chain-of-Custody Log:</b> Every access, verification, and dispatch action timestamped.</li>
+        <li><b>Instant PDF Export:</b> Single-click dossier compilation for investigating officers.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- S·07 LIVE DIGITAL-ARREST INTERCEPTION ENGINE (UIMAX Award Section 7) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·07</span><h2 class="band-title">Live Digital-Arrest <em>Interception.</em></h2></div>
+    <div class="split">
+      <div class="prose space-y-4">
+        <p>A "digital arrest" scam relies on keeping the victim isolated on continuous video calls while impersonating enforcement agencies (CBI, ED, Cyber Crime Police).</p>
+        <p>KAWACH monitors active sessions using a 4-phase weighted fusion engine: script keyphrase match (30%), voice-spoof probability (20%), deepfake video consensus (20%), and transaction velocity anomaly (30%). When the score crosses 70, dispatch fires automatically before money leaves the account.</p>
+      </div>
+      <div class="metric-strip" style="flex-direction:column;display:flex">
+        <div class="metric"><b>.30 / .20 / .20 / .30</b><span class="label">Weighted Fusion Math</span></div>
+        <div class="metric"><b>Score &ge; 70</b><span class="label">Auto-Dispatch Threshold</span></div>
+        <div class="metric"><b>Pre-Transfer Alert</b><span class="label">Bank &amp; Patrol Interception</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S·08 LOUVAIN FRAUD NETWORK & MULE GRAPH (UIMAX Award Section 8) -->
+  <section class="band band-tall quote-band reveal">
+    <div class="band-head"><span class="band-num">S·08</span><h2 class="band-title">Louvain Mule &amp; <em>Syndicate Graph.</em></h2></div>
+    <h3 class="display" style="font-size:var(--text-h1);max-width:22ch">Offenders, SIMs, accounts, &amp; UPI handles form <em>one connected graph.</em></h3>
+    <div class="split" style="margin-top:var(--s-8)">
+      <div class="prose">
+        <p>Louvain community detection partitions complex financial transactions to surface criminal rings. Betweenness centrality isolates mastermind brokers, while clean-history accounts receiving rapid forward transfers get an explainable mule flag with transparent rationale.</p>
+      </div>
+      <ul class="facts">
+        <li><b>Louvain Community Detection:</b> Discovers hidden clusters across inter-bank transfers.</li>
+        <li><b>Betweenness Centrality:</b> Highlights high-frequency broker nodes connecting disparate rings.</li>
+        <li><b>Explainable Mule Flags:</b> Every flag carries step-by-step human-readable audit justification.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- S·09 DBSCAN SPATIAL HOTSPOT CLUSTERING (UIMAX Award Section 9) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·09</span><h2 class="band-title">DBSCAN Spatial <em>Hotspotting.</em></h2></div>
+    <div class="split">
+      <div class="prose">
+        <p>Incidents cluster dynamically on real Haversine geographical distance using DBSCAN. High-density zones become priority patrol targets complete with centroid coordinates, dominant crime vector, and peak threat levels — while isolated incidents are honestly categorized as noise.</p>
+      </div>
+      <div class="metric-strip">
+        <div class="metric"><b>Haversine</b><span class="label">Real Earth Distance</span></div>
+        <div class="metric"><b>DBSCAN</b><span class="label">Tunable Density Radius</span></div>
+        <div class="metric"><b>Centroid</b><span class="label">Dynamic Patrol Center</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S·10 DISTILBERT URGENCY & OFFLINE KEYWORD ROUTER (UIMAX Award Section 10) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·10</span><h2 class="band-title">DistilBERT Urgency <em>Router.</em></h2></div>
+    <div class="split">
+      <div class="prose">
+        <p>Free-text citizen inputs are analyzed using zero-shot department mapping and DistilBERT priority cross-checking. When network connectivity drops, KAWACH seamlessly activates a local keyword fallback engine to maintain uninterrupted routing.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><h4>Text Input</h4><p>Citizen describes emergency in plain English, Hindi, or Kannada.</p></div>
+        <div class="flow-step"><h4>DistilBERT</h4><p>Priority classifier assigns CRITICAL, HIGH, NORMAL, or LOW tier.</p></div>
+        <div class="flow-step"><h4>Keyword Fallback</h4><p>Ensures 100% routing uptime even during zero-network conditions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S·11 ZERO-COST ZERO-DOWNTIME STACK (UIMAX Award Section 11) -->
+  <section class="band band-tall reveal">
+    <div class="band-head"><span class="band-num">S·11</span><h2 class="band-title">Zero-Cost <em>Production Stack.</em></h2></div>
+    <div class="metric-strip">
+      <div class="metric"><b>Vercel</b><span class="label">Citizen PWA Frontends</span></div>
+      <div class="metric"><b>Render</b><span class="label">FastAPI Command Backend</span></div>
+      <div class="metric"><b>HF Spaces</b><span class="label">AI Classifier Microservice</span></div>
+      <div class="metric"><b>Supabase</b><span class="label">Postgres &amp; Legal Vector RAG</span></div>
+      <div class="metric"><b>Cloudinary</b><span class="label">Evidence Media CDN</span></div>
+    </div>
+    <p class="prose" style="margin-top:var(--s-6)">Architected entirely on free-tier infrastructure capable of handling live production demos without cloud overhead.</p>
+  </section>
+
+  <!-- S·12 COMMAND GATEWAY (UIMAX Award Section 12 - Clean Portals) -->
+  <section class="band band-tall reveal" id="access">
+    <div class="band-head"><span class="band-num">S·12</span><h2 class="band-title">Command Gateway. <em>Select your portal.</em></h2></div>
+    <p class="prose" style="margin-bottom:var(--s-8)">Unified public safety architecture serving citizens and law enforcement command desks.</p>
+    
+    <div class="access-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); font-size: 1rem;">
+      <a class="access-card" href="https://kawach-two.vercel.app/" target="_blank" rel="noreferrer">
+        <span class="desk-glyph" id="glyph-citizen"></span>
+        <h3>Citizen App</h3>
+        <p>Report hazards, verify notes &amp; digital calls with Nayak AI counsel. De-identified before leaving your phone.</p>
+        <span class="access-go">Launch Citizen App →</span>
+      </a>
+      <a class="access-card" href="http://localhost:5173/" id="police-link">
+        <span class="desk-glyph" id="glyph-police"></span>
+        <h3>Police Command Console</h3>
+        <p>Hotspot DBSCAN clustering, fraud-ring graphs, live digital arrest monitor &amp; SHA-256 evidence dossiers.</p>
+        <span class="access-go">Open Command Console →</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer-line">
+    <span>KAWACH · One shield, two frontlines</span>
+    <span>Identity-free by construction · CodeKrafters</span>
+  </footer>
+
+  <script type="module">
+    import { SHIELD_MARK, DEPT_GLYPHS } from './departments/js/ui/glyphs.js';
+
+    if (document.getElementById('brand-mark')) document.getElementById('brand-mark').innerHTML = SHIELD_MARK;
+    if (document.getElementById('glyph-citizen')) document.getElementById('glyph-citizen').innerHTML = SHIELD_MARK;
+    if (document.getElementById('glyph-dept')) document.getElementById('glyph-dept').innerHTML = DEPT_GLYPHS['pwd-roads'];
+    if (document.getElementById('glyph-police')) document.getElementById('glyph-police').innerHTML = DEPT_GLYPHS['police'];
+
+    /* clock */
+    const clock = document.getElementById('topbar-clock');
+    const tick = () => {
+      clock.textContent = new Date().toLocaleString('en-IN', {
+        day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+      }).toUpperCase();
+    };
+    tick(); setInterval(tick, 1000);
+
+    /* hero line reveal */
+    const lines = document.querySelectorAll('.hero-title .line > span');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      lines.forEach((l, i) => {
+        l.style.transform = 'translateY(110%)';
+        l.style.transition = `transform .8s cubic-bezier(.22,.61,.36,1) ${0.15 + i * 0.13}s`;
+        requestAnimationFrame(() => requestAnimationFrame(() => { l.style.transform = 'translateY(0)'; }));
+      });
+    }
+
+    /* scroll reveals */
+    const nodes = document.querySelectorAll('.reveal');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      nodes.forEach((n) => n.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      nodes.forEach((n) => io.observe(n));
+    }
+
+    /* police console link: overridable once deployed (localStorage KAWACH_POLICE_URL) */
+    const policeUrl = localStorage.getItem('KAWACH_POLICE_URL') || (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' ? 'police/frontend/index.html' : null);
+    if (policeUrl) document.querySelectorAll('a[href="http://localhost:5173/"]').forEach((a) => { a.href = policeUrl; });
+  </script>
+</body>
+</html>
