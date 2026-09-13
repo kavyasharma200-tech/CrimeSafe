@@ -1,0 +1,16 @@
+{
+  "short_name": "Sentinel",
+  "name": "Citizen Sentinel Public Safety",
+  "icons": [
+    {
+      "src": "kawach.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#090e17",
+  "theme_color": "#121b2d",
+  "display": "standalone",
+  "orientation": "portrait"
+}

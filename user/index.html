@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/kawach.png" />
+    <link rel="apple-touch-icon" href="/kawach.png" />
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <!-- OpenGraph & Social Meta Tags -->
+    <meta property="og:title" content="KAWACH — Public Safety & Scam Shield Platform" />
+    <meta property="og:description" content="AI-driven public safety, citizen scam shield, digital-arrest detection & crime analytics." />
+    <meta property="og:image" content="/kawach.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KAWACH — Public Safety Platform" />
+    <meta name="twitter:description" content="AI-driven public safety, citizen scam shield & crime analytics." />
+    <meta name="twitter:image" content="/kawach.png" />
+
+    <!-- PWA Primary Tags -->
+    <meta name="theme-color" content="#FEFCF5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="KAWACH" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Fonts & Leaflet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400;500;640;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <title>Sentinel App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then((reg) => {
+            console.log('Sentinel PWA Service Worker Registered', reg);
+          }).catch((err) => {
+            console.warn('Sentinel PWA SW Registration Failed', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

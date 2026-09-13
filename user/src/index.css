@@ -1,0 +1,439 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #171307;
+  background-color: #F6F1E8;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-y: auto;
+  background-color: #ffffff; /* White base */
+  color: #171307;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chrome responsive layout container */
+body.in-app {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.in-app #root {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+}
+
+/* Full-height subview container without bottom navigation padding */
+.subview-container {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100%;
+  background-color: #ffffff; /* pure white background */
+  scrollbar-width: none;
+}
+
+.subview-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Light Glassmorphism panel styling (Snapchat Vibe) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #F6F1E8;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-card:active {
+  transform: scale(0.98);
+  background: #FEFCF5;
+}
+
+/* 3D card flip animation utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Map customization for Light Mode */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #F6F1E8 !important;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  background: #ffffff !important;
+  color: #171307 !important;
+  border: 1px solid #ECE6D7 !important;
+}
+
+/* Snapchat-style Heatmap Blurs */
+.heatmap-circle-blue {
+  filter: blur(28px);
+  fill: #3b82f6;
+  fill-opacity: 0.65;
+  stroke: none;
+  pointer-events: none;
+  transition: fill-opacity 0.3s ease;
+}
+.heatmap-circle-green {
+  filter: blur(22px);
+  fill: #10b981;
+  fill-opacity: 0.7;
+  stroke: none;
+  pointer-events: none;
+  transition: fill-opacity 0.3s ease;
+}
+.heatmap-circle-yellow {
+  filter: blur(16px);
+  fill: #fbbf24;
+  fill-opacity: 0.75;
+  stroke: none;
+  pointer-events: none;
+  transition: fill-opacity 0.3s ease;
+}
+.heatmap-circle-red {
+  filter: blur(10px);
+  fill: #ef4444;
+  fill-opacity: 0.85;
+  stroke: none;
+  pointer-events: none;
+  transition: fill-opacity 0.3s ease;
+}
+
+/* Custom leaflet map markers */
+.custom-map-avatar {
+  background: none;
+  border: none;
+}
+
+.avatar-marker-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 15px rgba(255, 220, 0, 0.7);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  animation: snap-heatmap-pulse 2s infinite alternate;
+}
+
+.avatar-marker-container.suspicious {
+  border-color: #ff3b30;
+  animation: snap-heatmap-critical 1.5s infinite alternate;
+}
+
+.avatar-marker-container.verified {
+  border-color: #ffd900;
+  animation: snap-heatmap-verified 2s infinite alternate;
+}
+
+.avatar-marker-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+@keyframes snap-heatmap-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba(255, 220, 0, 0.6), 0 0 20px rgba(255, 220, 0, 0.3);
+  }
+  100% {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.9), 0 0 40px rgba(239, 68, 68, 0.4);
+  }
+}
+
+@keyframes snap-heatmap-verified {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 10px rgba(255, 252, 0, 0.7), 0 0 15px rgba(255, 149, 0, 0.4);
+  }
+  100% {
+    transform: scale(1.04);
+    box-shadow: 0 0 25px rgba(255, 252, 0, 0.9), 0 0 35px rgba(239, 68, 68, 0.7);
+  }
+}
+
+@keyframes snap-heatmap-critical {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);
+  }
+  100% {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.95), 0 0 50px rgba(220, 38, 38, 0.6);
+  }
+}
+
+/* User Location pulse marker (Blue for Location Accuracy) */
+.user-pulse-container {
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 122, 255, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-pulse-dot {
+  width: 12px;
+  height: 12px;
+  background: #007aff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #007aff, 0 0 20px rgba(0, 122, 255, 0.4);
+  animation: radar-ping-blue 1.5s infinite;
+}
+
+@keyframes radar-ping-blue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(0, 122, 255, 0);
+  }
+}
+
+/* Custom view wrapper */
+.view-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 90px; /* offset for bottom navigation bar */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100%;
+  background-color: #ffffff;
+  scrollbar-width: none;
+}
+
+.view-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Reels video feed specific styling */
+.reels-container {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+}
+
+.reels-container::-webkit-scrollbar {
+  display: none;
+}
+
+.reel-card {
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #000;
+}
+
+/* Scrollbar customization where needed */
+.scroll-y {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+.scroll-y::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scroll-y::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+/* Pulsing mic animations */
+.pulse-red {
+  box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.6);
+  animation: pulse-red-anim 1.5s infinite;
+}
+
+@keyframes pulse-red-anim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(255, 59, 48, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(0,0,0,0.03) 25%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.03) 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Bottom Navigation Custom Micro-Animations */
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.nav-sliding-circle {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Bottom Sheet Slide-Up Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Bottom Sheet Camera Upload Drawer */
+.camera-bottom-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 28px 28px 0 0;
+  max-height: 75dvh;
+  overflow-y: auto;
+  background: #ffffff;
+  scrollbar-width: none;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
+}
+
+.camera-bottom-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar utility class */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+
+
+
